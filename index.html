@@ -6,6 +6,28 @@
     <h1>Title</h1>
     <h3>SubTitle</h3>
     <div>Content</div>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      window.addEventListener('load', function() {
+          readTextFile("/data.yml"); 
+      });
+      
+      function readTextFile(file)
+      {
+          var rawFile = new XMLHttpRequest();
+          rawFile.open("GET", file, false);
+          rawFile.onreadystatechange = function ()
+          {
+              if(rawFile.readyState === 4)
+              {
+                  if(rawFile.status === 200 || rawFile.status == 0)
+                  {
+                      var allText = rawFile.responseText;
+                      alert(allText);
+                  }
+              }
+          }
+          rawFile.send(null);
+      }    
+    </script>
   </body>
 </html>
