@@ -6,36 +6,17 @@
     <h1>Title</h1>
     <h3>SubTitle</h3>
     <div>Content</div>
+    <script src="https://raw.githubusercontent.com/backgroundapps/objectfiable.js/master/objectfiable.js"></script>
     <script type="text/javascript">
       window.addEventListener('load', function() {
-          //readTextFile("/data.yml"); 
           fetchFile("data.yml");
       });
       
       function fetchFile(filename) {
-         fetch(filename)
-           .then(response => response.text())
-           .then(text => console.log(text))
+         fetch(filename).then(response => response.text()).then(text => console.log(text))
+         console.log("fetched");
+         create(filename);
       }
-      
-      function readTextFile(file)
-      {
-          var rawFile = new XMLHttpRequest();
-          rawFile.open("GET", file, false);
-          rawFile.onreadystatechange = function ()
-          {
-              if(rawFile.readyState === 4)
-              {
-                  if(rawFile.status === 200 || rawFile.status == 0)
-                  {
-                      var allText = rawFile.responseText;
-                      console.log("start log:");
-                      console.log(allText);
-                  }
-              }
-          }
-          rawFile.send(null);
-      }    
     </script>
   </body>
 </html>
